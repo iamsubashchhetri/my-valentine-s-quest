@@ -28,7 +28,7 @@ const HeroSection = ({ onYes }: HeroSectionProps) => {
 
       <div className="text-center z-10 animate-slide-up-fade">
         <h1 className="font-romantic text-6xl sm:text-7xl md:text-8xl text-primary text-glow mb-6 leading-tight">
-          Will you be my Valentine? 💖
+          Sana, will you be my Valentine? 💖
         </h1>
         <p className="text-lg md:text-xl text-foreground/70 max-w-lg mx-auto mb-12 font-body">
           Every moment with you feels like magic, and I want this Valentine's Day to be ours.

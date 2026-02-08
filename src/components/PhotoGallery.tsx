@@ -1,6 +1,19 @@
 import { useEffect, useRef, useState } from "react";
+import couple1 from "@/assets/couple-1.jpeg";
+import couple2 from "@/assets/couple-2.jpeg";
+import couple3 from "@/assets/couple-3.jpeg";
+import couple4 from "@/assets/couple-4.jpeg";
+import couple5 from "@/assets/couple-5.jpeg";
+import couple6 from "@/assets/couple-6.png";
 
-const ROTATIONS = [-3, 2, -1.5, 3, -2, 1.5];
+const PHOTOS = [
+  { src: couple1, rotation: -3 },
+  { src: couple2, rotation: 2 },
+  { src: couple3, rotation: -1.5 },
+  { src: couple4, rotation: 3 },
+  { src: couple5, rotation: -2 },
+  { src: couple6, rotation: 1.5 },
+];
 
 const PhotoGallery = () => {
   const [visible, setVisible] = useState<boolean[]>(Array(6).fill(false));
@@ -10,7 +23,7 @@ const PhotoGallery = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          ROTATIONS.forEach((_, i) => {
+          PHOTOS.forEach((_, i) => {
             setTimeout(() => {
               setVisible((prev) => {
                 const next = [...prev];
@@ -32,24 +45,25 @@ const PhotoGallery = () => {
     <section ref={ref} className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-          {ROTATIONS.map((rotation, i) => (
+          {PHOTOS.map((photo, i) => (
             <div
               key={i}
               className="transition-all duration-700"
               style={{
                 opacity: visible[i] ? 1 : 0,
                 transform: visible[i]
-                  ? `translateY(0) rotate(${rotation}deg)`
-                  : `translateY(40px) rotate(${rotation}deg)`,
+                  ? `translateY(0) rotate(${photo.rotation}deg)`
+                  : `translateY(40px) rotate(${photo.rotation}deg)`,
               }}
             >
               <div className="bg-card p-3 pb-12 rounded-sm shadow-lg hover:shadow-xl transition-shadow duration-300 relative">
-                <div className="aspect-square bg-secondary rounded-sm flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-primary/30">♥</span>
+                <div className="aspect-square bg-secondary rounded-sm overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={`Us - memory ${i + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="absolute bottom-3 left-0 right-0 text-center text-xs text-muted-foreground font-body">
-                  Photo {i + 1}
-                </p>
               </div>
             </div>
           ))}
