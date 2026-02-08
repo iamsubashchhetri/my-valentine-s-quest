@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        romantic: ['"Great Vibes"', 'cursive'],
+        body: ['"Quicksand"', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +50,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        valentine: {
+          rose: "hsl(var(--valentine-rose))",
+          blush: "hsl(var(--valentine-blush))",
+          deep: "hsl(var(--valentine-deep))",
+          gold: "hsl(var(--valentine-gold))",
+          cream: "hsl(var(--valentine-cream))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
